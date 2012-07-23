@@ -28,9 +28,9 @@
     Multiupload.prototype.render = function() {
       this.dropzone = $('<div class="dnd-dropzone" />').appendTo(this.element);
       this.input = this.element.find('input').appendTo(this.dropzone);
-      this.input.addClass('dnd-file');
+      this.input.prop('multiple', '').addClass('dnd-file');
       this.input.attr('size', '100%');
-      $('<span>Click or drag file to add as attachment</span>').prependTo(this.dropzone);
+      $('<span>Click here or drag file to add as attachment</span>').prependTo(this.dropzone);
       return this.files = $('<ul class="dnd-filelist">').appendTo(this.element);
     };
 
