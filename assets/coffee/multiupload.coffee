@@ -3,21 +3,24 @@ $(document).ready () ->
   new Multiupload $(el) for el in $('.attachment')
 
 
+
 class Multiupload
 
-  constructor: (@element, enable_drag = yes) ->
+  constructor: (@element) ->
     @element.addClass 'dnd'
-    @element.addClass 'dnd-dragenabled' if enable_drag
 
     @render()
+
     @enable_multiupload()
+    # Firefox gets confused with the 
+    @enable_drag() if navigator.userAgent?.toLowerCase().indexOf('webkit') isnt -1
 
     # Dont send the empty file input along
     @element.closest('form').submit () => @input.remove()
 
 
   render: () ->
-    @build_dropzone()
+    @dropzone = $('<div class="dnd-dropzone" />').appendTo @element
 
     @input = @element.find('input').appendTo @dropzone
     @input.addClass 'dnd-file'
@@ -25,21 +28,20 @@ class Multiupload
     # Fix for Firefox. Has to be attr() to prevent validation
     @input.attr 'size', '100%'
 
-
     $('<span>Click or drag file to add as attachment</span>').prependTo @dropzone
     @files = $('<ul class="dnd-filelist">').appendTo @element
 
 
-  build_dropzone: () ->
-    @dropzone = $('<div class="dnd-dropzone" />').appendTo @element
+  enable_drag: () ->
+    @element.addClass 'dnd-dragenabled'
 
-    @dropzone.on 'dragenter', () => @dropzone.addClass 'active'
-    @dropzone.on 'dragleave', () => @dropzone.removeClass 'active'
+    @dropzone.on 'dragenter', () => @dropzone.addClass 'dnd-dragging'
+    @dropzone.on 'dragleave', () => @dropzone.removeClass 'dnd-dragging'
 
 
   enable_multiupload: () ->
     @input.on 'change', (e) =>
-      @dropzone.removeClass 'active'
+      @dropzone.removeClass 'dnd-dragging'
       @add_file $(e.target)
 
 
