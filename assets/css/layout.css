@@ -55,36 +55,3 @@ button {
   margin-top: 2em;
   background: #ddd;
   cursor: pointer; }
-
-.dnd .dnd-dropzone {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  padding: 1px 0; }
-  .dnd .dnd-dropzone .dnd-file {
-    position: absolute;
-    z-index: 999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer; }
-  .dnd .dnd-dropzone span {
-    display: block; }
-.dnd .dnd-filelist {
-  list-style-type: disc;
-  list-style-position: inside; }
-  .dnd .dnd-filelist .dnd-file {
-    position: absolute;
-    left: -9999px; }
-  .dnd .dnd-filelist .dnd-remove {
-    display: inline-block;
-    margin-left: 0.75em; }
-
-.dnd-dragenabled .dnd-dropzone.dnd-dragging {
-  background-color: #fff;
-  padding: 0;
-  border: 1px dashed #999; }
-  .dnd-dragenabled .dnd-dropzone.dnd-dragging span {
-    opacity: 0; }

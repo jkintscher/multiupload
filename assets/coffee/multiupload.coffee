@@ -1,14 +1,13 @@
+$ = @jQuery
 
-$(document).ready () ->
-  new Multiupload $(el) for el in $('.attachment')
-
+$.fn.multiupload = () ->
+  new Multiupload $(this)
 
 
 class Multiupload
 
   constructor: (@element) ->
     @element.addClass 'dnd'
-
     @render()
 
     @enable_multiupload()

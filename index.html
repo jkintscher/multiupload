@@ -5,6 +5,7 @@
 
 		<title>Drag and Drop Multiupload</title>
 		<link rel="stylesheet" href="assets/css/layout.css" />
+		<link rel="stylesheet" href="assets/css/multiupload.css" />
 	</head>
 	<body>
 
@@ -25,5 +26,12 @@
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 		<script src="/assets/js/multiupload.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				$('.attachment').multiupload();
+  		});
+		</script>
 	</body>
 </html>
