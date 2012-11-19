@@ -29,7 +29,9 @@
       this.dropzone = $('<div class="dnd-dropzone" />').appendTo(this.element);
       this.input = this.element.find('input').appendTo(this.dropzone);
       this.input.prop('multiple', '').addClass('dnd-file');
-      this.input.attr('size', '100%');
+      if ('MozBoxSizing' in document.documentElement.style) {
+        this.input.attr('size', '100%');
+      }
       $('<span>Click here or drag file to add as attachment</span>').prependTo(this.dropzone);
       return this.files = $('<ul class="dnd-filelist">').appendTo(this.element);
     };

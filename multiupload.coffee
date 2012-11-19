@@ -25,7 +25,8 @@ class Multiupload
     @input.prop('multiple', '').addClass 'dnd-file'
 
     # Fix for Firefox. Has to be attr() to prevent validation
-    @input.attr 'size', '100%'
+    if 'MozBoxSizing' of document.documentElement.style
+      @input.attr 'size', '100%'
 
     $('<span>Click here or drag file to add as attachment</span>').prependTo @dropzone
     @files = $('<ul class="dnd-filelist">').appendTo @element
